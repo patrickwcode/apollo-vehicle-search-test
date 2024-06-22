@@ -1,35 +1,7 @@
-<<<<<<< HEAD
-# React + TypeScript + Vite
+# Vehicle Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uses the <a href="https://rapidapi.com/carapi/api/car-api2">Car API</a> to query data of all major car company's models between 1990 to present.  Apollo Client and React are used for the front end without a database.
 
-Currently, two official plugins are available:
+# Goal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-=======
-# apollo-vehicle-search-test
-React &amp; Apollo Client app that searches for cars.
->>>>>>> e56c5f17919fb74454490df76f376988f7a26e37
+Once the 3-part menu is working properly (Year, Make, & Model), this will interact with the Unsplash API to render a photo of the selected vehicle.  I will design the website with Figma and integrate this menu into it.
