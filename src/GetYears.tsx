@@ -25,7 +25,7 @@ export default function GetYears() {
   });
 
   if (years !== null) {
-    return Object.keys(years).map((year: string) => {
+    return Object.values(years).map((year: string) => {
       return <option>{year}</option>;
     });
   } else {
