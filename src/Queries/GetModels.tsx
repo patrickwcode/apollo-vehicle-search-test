@@ -2,7 +2,11 @@ import { gql, useQuery } from "@apollo/client";
 
 const GET_MODELS = gql`
   query Models {
-    models @rest(type: "Model", path: "/api/models") {
+    models
+      @rest(
+        type: "Model"
+        path: "/api/models?verbose=no&year=2020&sort=id&make=acura&direction=asc"
+      ) {
       data {
         id
         name
