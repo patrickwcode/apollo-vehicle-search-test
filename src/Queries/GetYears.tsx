@@ -26,9 +26,13 @@ export default function GetYears() {
 
   if (years !== null) {
     return Object.values(years).map((year: string) => {
-      return <option>{year}</option>;
+      return (
+        <option id={year} key={year}>
+          {year}
+        </option>
+      );
     });
   } else {
-    return <option>Error: No years found.</option>
+    return <option>Error: No years found.</option>;
   }
 }

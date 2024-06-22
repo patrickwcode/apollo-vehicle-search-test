@@ -1,6 +1,6 @@
 import "./App.css";
-import GetMakes from "./GetMakes";
-import GetYears from "./GetYears";
+import GetMakes from "./Queries/GetMakes";
+import GetYears from "./Queries/GetYears";
 
 function App() {
   return (
