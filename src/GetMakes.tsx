@@ -16,7 +16,7 @@ function GetMakesQuery() {
   if (loading) return <option>Loading...</option>;
   if (error) return <option>Error : {error.message}</option>;
 
-  return data.makes.data.map((make: any) => {
+  return data.makes.data.map((make: { id: string; name: string }) => {
     return (
       <option id={make.id} key={make.id}>
         {make.name}
