@@ -1,13 +1,14 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery, makeVar } from "@apollo/client";
 import { Context } from "../Context";
 import { useContext } from "react";
 
 function GetMakesQuery() {
   const value = useContext(Context);
+  const yearVar = makeVar(value.year);
   const GET_MAKES = gql`
   query Makes {
     makes
-      @rest(type: "Make", path: "/api/makes?direction=asc&year=${value.year}&sort=id") {
+      @rest(type: "Make", path: "/api/makes?direction=asc&year=${yearVar()}&sort=id") {
       data {
         id
         name
