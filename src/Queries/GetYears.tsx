@@ -1,38 +1,26 @@
-import { useEffect, useState } from "react";
-const CAR_API_KEY: string = import.meta.env.VITE_CAR_API_KEY;
-
-// Car API endpoint for Years does not have keys.  Only an array of years.
+// Free version of Car API is limited from 2015 to 2020.
 
 export default function GetYears() {
-  let [years, setYears] = useState<object>({});
-
-  useEffect(() => {
-    try {
-      fetch("https://car-api2.p.rapidapi.com/api/years", {
-        method: "GET",
-        headers: {
-          "x-rapidapi-key": CAR_API_KEY,
-          "x-rapidapi-host": "car-api2.p.rapidapi.com",
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => {
-          setYears(json);
-        });
-    } catch (err) {
-      console.error(err);
-    }
-  });
-
-  if (years !== null) {
-    return Object.values(years).map((year: string) => {
-      return (
-        <option id={year} key={year}>
-          {year}
-        </option>
-      );
-    });
-  } else {
-    return <option>Error: No years found.</option>;
-  }
+  return (
+    <>
+      <option value="2015" key="2015">
+        2015
+      </option>
+      <option value="2016" key="2016">
+        2016
+      </option>
+      <option value="2017" key="2017">
+        2017
+      </option>
+      <option value="2018" key="2018">
+        2018
+      </option>
+      <option value="2019" key="2019">
+        2019
+      </option>
+      <option value="2020" key="2020">
+        2020
+      </option>
+    </>
+  );
 }

@@ -1,8 +1,13 @@
 import { gql, useQuery } from "@apollo/client";
+import { Context } from "../Context";
+import { useContext } from "react";
 
-const GET_MAKES = gql`
+function GetMakesQuery() {
+  const value = useContext(Context);
+  const GET_MAKES = gql`
   query Makes {
-    makes @rest(type: "Make", path: "/api/makes?direction=asc&sort=id") {
+    makes
+      @rest(type: "Make", path: "/api/makes?direction=asc&year=${value.year}&sort=id") {
       data {
         id
         name
@@ -11,14 +16,13 @@ const GET_MAKES = gql`
   }
 `;
 
-function GetMakesQuery() {
   const { loading, error, data } = useQuery(GET_MAKES);
   if (loading) return <option>Loading...</option>;
   if (error) return <option>Error : {error.message}</option>;
 
   return data.makes.data.map((make: { id: string; name: string }) => {
     return (
-      <option id={make.id} key={make.id}>
+      <option value={make.name} key={make.id}>
         {make.name}
       </option>
     );
