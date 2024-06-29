@@ -1,8 +1,11 @@
 // Free version of Car API is limited from 2015 to 2020.
 
-export default function GetYears() {
+export default function GetYears(props: any) {
+  const { onChangeYear } = props;
+
   return (
-    <>
+    <select id="select-year" onChange={onChangeYear}>
+      <option value="year">Year</option>
       <option value="2015" key="2015">
         2015
       </option>
@@ -21,6 +24,6 @@ export default function GetYears() {
       <option value="2020" key="2020">
         2020
       </option>
-    </>
+    </select>
   );
 }

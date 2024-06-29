@@ -10,21 +10,24 @@ function App() {
   const [make, setMake] = useState("Toyota");
   const [model, setModel] = useState("Camry");
 
+  const onChangeYear = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setYear(e.target.value);
+  };
+
+  const onChangeMake = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMake(e.target.value);
+  };
+
+  const onChangeModel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setModel(e.target.value);
+  };
+
   return (
     <Context.Provider value={{ year, make, model }}>
       <div>
-        <select id="select-year" onChange={(e) => setYear(e.target.value)}>
-          <option value="year">Year</option>
-          <GetYears />
-        </select>
-        <select id="select-make" onChange={(e) => setMake(e.target.value)}>
-          <option value="make">Make</option>
-          <GetMakes />
-        </select>
-        <select id="select-model" onChange={(e) => setModel(e.target.value)}>
-          <option value="model">Model</option>
-          <GetModels />
-        </select>
+        <GetYears onChangeYear={onChangeYear} />
+        <GetMakes onChangeMake={onChangeMake} />
+        <GetModels onChangeModel={onChangeModel} year={year} make={make} />
       </div>
     </Context.Provider>
   );
