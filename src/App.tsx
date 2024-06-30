@@ -23,13 +23,11 @@ function App() {
   };
 
   return (
-    <Context.Provider value={{ year, make, model }}>
-      <div>
-        <GetYears onChangeYear={onChangeYear} />
-        <GetMakes onChangeMake={onChangeMake} />
-        <GetModels onChangeModel={onChangeModel} year={year} make={make} />
-      </div>
-    </Context.Provider>
+    <div>
+      <GetYears onChangeYear={onChangeYear} />
+      <GetMakes onChangeMake={onChangeMake} year={year} />
+      <GetModels onChangeModel={onChangeModel} year={year} make={make} />
+    </div>
   );
 }
 

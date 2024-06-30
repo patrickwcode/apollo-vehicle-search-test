@@ -1,5 +1,4 @@
 // Free version of Car API is limited from 2015 to 2020.
-
 export default function GetYears(props: any) {
   const { onChangeYear } = props;
 
