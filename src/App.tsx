@@ -3,7 +3,7 @@ import { useState } from "react";
 import GetMakes from "./Queries/GetMakes";
 import GetModels from "./Queries/GetModels";
 import GetYears from "./Queries/GetYears";
-import { Context } from "./Context";
+import GetPhoto from "./Queries/GetPhoto";
 
 function App() {
   const [year, setYear] = useState("2015");
@@ -27,6 +27,7 @@ function App() {
       <GetYears onChangeYear={onChangeYear} />
       <GetMakes onChangeMake={onChangeMake} year={year} />
       <GetModels onChangeModel={onChangeModel} year={year} make={make} />
+      <GetPhoto />
     </div>
   );
 }
