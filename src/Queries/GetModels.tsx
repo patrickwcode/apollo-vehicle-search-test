@@ -1,7 +1,16 @@
 import { gql, useQuery } from "@apollo/client";
 
-export default function GetModels(props: any) {
-  const { onChangeModel, year, make } = props;
+interface GetModelsProps {
+  onChangeModel: React.ChangeEventHandler<HTMLSelectElement>;
+  year: string;
+  make: string;
+}
+
+export default function GetModels({
+  onChangeModel,
+  year,
+  make,
+}: GetModelsProps) {
   const GET_MODELS = gql`
   query Models {
     models
@@ -16,7 +25,9 @@ export default function GetModels(props: any) {
     }
   }
 `;
-  const queryGetModels = useQuery(GET_MODELS, { fetchPolicy: "cache-and-network" });
+  const queryGetModels = useQuery(GET_MODELS, {
+    fetchPolicy: "cache-and-network",
+  });
 
   return (
     <select id="select-model" name="select-model" onChange={onChangeModel}>

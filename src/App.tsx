@@ -10,15 +10,15 @@ function App() {
   const [make, setMake] = useState("Toyota");
   const [model, setModel] = useState("Camry");
 
-  const onChangeYear = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeYear: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setYear(e.target.value);
   };
 
-  const onChangeMake = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeMake: React.ChangeEventHandler<HTMLSelectElement>= (e) => {
     setMake(e.target.value);
   };
 
-  const onChangeModel = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeModel: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setModel(e.target.value);
   };
 
@@ -27,7 +27,7 @@ function App() {
       <GetYears onChangeYear={onChangeYear} />
       <GetMakes onChangeMake={onChangeMake} year={year} />
       <GetModels onChangeModel={onChangeModel} year={year} make={make} />
-      <GetPhoto />
+      <GetPhoto year={year} make={make} model={model} />
     </div>
   );
 }

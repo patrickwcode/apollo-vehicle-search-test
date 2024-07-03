@@ -1,28 +1,32 @@
+// Unsplash has a limited amount of photos, so the query must be generic.
+// Query only uses make and model props.
 import { useEffect, useState } from "react";
 
-export default function GetPhoto() {
+interface GetPhotoProps {
+  year: string;
+  make: string;
+  model: string;
+}
+
+export default function GetPhoto({ year, make, model }: GetPhotoProps) {
   const UNSPLASH_API_KEY: string = import.meta.env.VITE_UNSPLASH_API_KEY;
-  const [photo, setPhoto] = useState<Promise<any>>();
+  const [photo, setPhoto] = useState<string>();
 
   useEffect(() => {
     const getPhotoQuery = async () => {
-      await fetch(
-        `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}`,
-        {
-          headers: {
-            count: "1",
-            // Unsplash does not find cars by year / make / model. Only model.
-            query: "camry",
-          },
-        }
-      )
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.error(err));
+      try {
+        await fetch(
+          `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}&query=${make}%20${model}`
+        )
+          .then((response) => response.json())
+          .then((data) => setPhoto(data.urls.small));
+      } catch (err) {
+        console.error(err);
+      }
     };
 
     getPhotoQuery();
-  }, []);
+  }, [UNSPLASH_API_KEY, make, model]);
 
-  return <div></div>;
+  return <img src={photo} alt={`${year} ${make} ${model}`}></img>;
 }

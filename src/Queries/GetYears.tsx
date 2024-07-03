@@ -1,7 +1,9 @@
 // Free version of Car API is limited from 2015 to 2020.
-export default function GetYears(props: any) {
-  const { onChangeYear } = props;
+interface GetYearsProps {
+  onChangeYear: React.ChangeEventHandler<HTMLSelectElement>;
+}
 
+export default function GetYears({ onChangeYear }: GetYearsProps) {
   return (
     <select id="select-year" onChange={onChangeYear}>
       <option value="year">Year</option>

@@ -1,7 +1,11 @@
 import { gql, useQuery } from "@apollo/client";
 
-export default function GetMakes(props: any) {
-  const { onChangeMake, year } = props;
+interface GetMakesProps {
+  onChangeMake: React.ChangeEventHandler<HTMLSelectElement>;
+  year: string;
+}
+
+export default function GetMakes({ onChangeMake, year }: GetMakesProps) {
   const GET_MAKES = gql`
   query Makes {
     makes
@@ -14,7 +18,9 @@ export default function GetMakes(props: any) {
   }
 `;
 
-  const queryGetMakes = useQuery(GET_MAKES, { fetchPolicy: "cache-and-network" });
+  const queryGetMakes = useQuery(GET_MAKES, {
+    fetchPolicy: "cache-and-network",
+  });
   return (
     <select id="select-make" name="select-make" onChange={onChangeMake}>
       <option value="make">Make</option>
