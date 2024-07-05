@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import "bootstrap/scss/bootstrap.scss";
 import GetMakes from "./Queries/GetMakes";
 import GetModels from "./Queries/GetModels";
 import GetYears from "./Queries/GetYears";
@@ -14,7 +15,7 @@ function App() {
     setYear(e.target.value);
   };
 
-  const onChangeMake: React.ChangeEventHandler<HTMLSelectElement>= (e) => {
+  const onChangeMake: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setMake(e.target.value);
   };
 
@@ -27,7 +28,9 @@ function App() {
       <GetYears onChangeYear={onChangeYear} />
       <GetMakes onChangeMake={onChangeMake} year={year} />
       <GetModels onChangeModel={onChangeModel} year={year} make={make} />
-      <GetPhoto year={year} make={make} model={model} />
+      <div className="d-block">
+        <GetPhoto year={year} make={make} model={model} />
+      </div>
     </div>
   );
 }
