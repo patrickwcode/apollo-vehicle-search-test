@@ -30,7 +30,12 @@ export default function GetModels({
   });
 
   return (
-    <select id="select-model" name="select-model" onChange={onChangeModel}>
+    <select
+      className="form-select form-select-md mb-3"
+      id="select-model"
+      name="select-model"
+      onChange={onChangeModel}
+    >
       <option value="model">Model</option>
       {queryGetModels.data?.models.data.map(
         (model: { id: string; name: string }) => {

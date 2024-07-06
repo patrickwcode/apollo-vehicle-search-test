@@ -24,14 +24,22 @@ function App() {
   };
 
   return (
-    <div>
-      <GetYears onChangeYear={onChangeYear} />
-      <GetMakes onChangeMake={onChangeMake} year={year} />
-      <GetModels onChangeModel={onChangeModel} year={year} make={make} />
-      <div className="d-block">
+    <main className="container bg-primary bg-gradient p-3 border border-primary-subtle">
+      <div className="row">
+        <div className="col-sm col-md-3">
+          <GetYears onChangeYear={onChangeYear} />
+        </div>
+        <div className="col-sm col-md-3">
+          <GetMakes onChangeMake={onChangeMake} year={year} />
+        </div>
+        <div className="col-sm col-md-6">
+          <GetModels onChangeModel={onChangeModel} year={year} make={make} />
+        </div>
+      </div>
+      <div>
         <GetPhoto year={year} make={make} model={model} />
       </div>
-    </div>
+    </main>
   );
 }
 

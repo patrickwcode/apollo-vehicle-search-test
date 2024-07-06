@@ -22,7 +22,12 @@ export default function GetMakes({ onChangeMake, year }: GetMakesProps) {
     fetchPolicy: "cache-and-network",
   });
   return (
-    <select id="select-make" name="select-make" onChange={onChangeMake}>
+    <select
+      className="form-select form-select-md mb-3"
+      id="select-make"
+      name="select-make"
+      onChange={onChangeMake}
+    >
       <option value="make">Make</option>
       {queryGetMakes.data?.makes.data.map(
         (make: { id: string; name: string }) => {

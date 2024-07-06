@@ -26,7 +26,9 @@ export default function GetPhoto({ year, make, model }: GetPhotoProps) {
     };
 
     getPhotoQuery();
-  }, [UNSPLASH_API_KEY, make, model]);
+  }, []);
 
-  return <img src={photo} alt={`${year} ${make} ${model}`}></img>;
+  return (
+    <img className="border border-2 border-primary-subtle" src={photo} alt={`${year} ${make} ${model}`}></img>
+  );
 }
