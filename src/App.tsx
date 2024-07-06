@@ -10,13 +10,17 @@ function App() {
   const [year, setYear] = useState("2015");
   const [make, setMake] = useState("Toyota");
   const [model, setModel] = useState("Camry");
+  const [isYearSelected, setIsYearSelected] = useState(false);
+  const [isModelSelected, setIsModelSelected] = useState(false);
 
   const onChangeYear: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setYear(e.target.value);
+    setIsYearSelected(true);
   };
 
   const onChangeMake: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setMake(e.target.value);
+    setIsModelSelected(true);
   };
 
   const onChangeModel: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
@@ -30,10 +34,19 @@ function App() {
           <GetYears onChangeYear={onChangeYear} />
         </div>
         <div className="col-sm col-md-3">
-          <GetMakes onChangeMake={onChangeMake} year={year} />
+          <GetMakes
+            onChangeMake={onChangeMake}
+            year={year}
+            isModelSelected={isYearSelected}
+          />
         </div>
         <div className="col-sm col-md-6">
-          <GetModels onChangeModel={onChangeModel} year={year} make={make} />
+          <GetModels
+            onChangeModel={onChangeModel}
+            year={year}
+            make={make}
+            isModelSelected={isModelSelected}
+          />
         </div>
       </div>
       <div>
