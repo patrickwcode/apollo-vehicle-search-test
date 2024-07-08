@@ -4,14 +4,14 @@ interface GetModelsProps {
   onChangeModel: React.ChangeEventHandler<HTMLSelectElement>;
   year: string;
   make: string;
-  isModelSelected: boolean;
+  isMakeSelected: boolean;
 }
 
 export default function GetModels({
   onChangeModel,
   year,
   make,
-  isModelSelected,
+  isMakeSelected,
 }: GetModelsProps) {
   const GET_MODELS = gql`
   query Models {
@@ -37,9 +37,9 @@ export default function GetModels({
       id="select-model"
       name="select-model"
       onChange={onChangeModel}
-      disabled={isModelSelected ? false : true}
+      disabled={isMakeSelected ? false : true}
     >
-      <option value="model">Model</option>
+      <option value="" selected disabled hidden>Model</option>
       {queryGetModels.data?.models.data.map(
         (model: { id: string; name: string }) => {
           return (

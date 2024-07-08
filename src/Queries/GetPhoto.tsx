@@ -16,7 +16,7 @@ export default function GetPhoto({ year, make, model }: GetPhotoProps) {
     const getPhotoQuery = async () => {
       try {
         await fetch(
-          `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}&query=${make}%20${model}`
+          `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}&query=${make}%20${model}%20orientation=landscape`
         )
           .then((response) => response.json())
           .then((data) => setPhoto(data.urls.small));

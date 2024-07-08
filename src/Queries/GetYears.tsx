@@ -6,7 +6,7 @@ interface GetYearsProps {
 export default function GetYears({ onChangeYear }: GetYearsProps) {
   return (
     <select className="form-select form-select-md mb-3" id="select-year" onChange={onChangeYear}>
-      <option value="year">Year</option>
+      <option value="" selected disabled hidden>Year</option>
       <option value="2015" key="2015">
         2015
       </option>

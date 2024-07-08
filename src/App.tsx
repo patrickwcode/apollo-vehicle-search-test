@@ -11,20 +11,38 @@ function App() {
   const [make, setMake] = useState("Toyota");
   const [model, setModel] = useState("Camry");
   const [isYearSelected, setIsYearSelected] = useState(false);
+  const [isMakeSelected, setIsMakeSelected] = useState(false);
   const [isModelSelected, setIsModelSelected] = useState(false);
 
   const onChangeYear: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setYear(e.target.value);
     setIsYearSelected(true);
+
+    // Disables Make and Model selects when Year changes.
+    if (isMakeSelected) {
+      const selectMake = document.getElementById(
+        "select-make"
+      ) as HTMLInputElement;
+      const selectModel = document.getElementById(
+        "select-model"
+      ) as HTMLInputElement;
+
+      selectMake.value = "";
+      selectModel.value = "";
+
+      setIsMakeSelected(false);
+      setIsModelSelected(false);
+    }
   };
 
   const onChangeMake: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setMake(e.target.value);
-    setIsModelSelected(true);
+    setIsMakeSelected(true);
   };
 
   const onChangeModel: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setModel(e.target.value);
+    setIsModelSelected(true);
   };
 
   return (
@@ -37,7 +55,7 @@ function App() {
           <GetMakes
             onChangeMake={onChangeMake}
             year={year}
-            isModelSelected={isYearSelected}
+            isYearSelected={isYearSelected}
           />
         </div>
         <div className="col-sm col-md-6">
@@ -45,7 +63,7 @@ function App() {
             onChangeModel={onChangeModel}
             year={year}
             make={make}
-            isModelSelected={isModelSelected}
+            isMakeSelected={isMakeSelected}
           />
         </div>
       </div>

@@ -3,13 +3,13 @@ import { gql, useQuery } from "@apollo/client";
 interface GetMakesProps {
   onChangeMake: React.ChangeEventHandler<HTMLSelectElement>;
   year: string;
-  isModelSelected: boolean;
+  isYearSelected: boolean;
 }
 
 export default function GetMakes({
   onChangeMake,
   year,
-  isModelSelected,
+  isYearSelected,
 }: GetMakesProps) {
   const GET_MAKES = gql`
   query Makes {
@@ -32,9 +32,11 @@ export default function GetMakes({
       id="select-make"
       name="select-make"
       onChange={onChangeMake}
-      disabled={isModelSelected ? false : true}
+      disabled={isYearSelected ? false : true}
     >
-      <option value="make">Make</option>
+      <option value="" selected disabled hidden>
+        Make
+      </option>
       {queryGetMakes.data?.makes.data.map(
         (make: { id: string; name: string }) => {
           return (
