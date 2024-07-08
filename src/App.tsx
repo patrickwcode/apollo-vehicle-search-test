@@ -38,6 +38,16 @@ function App() {
   const onChangeMake: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setMake(e.target.value);
     setIsMakeSelected(true);
+
+    if (isModelSelected) {
+      const selectModel = document.getElementById(
+        "select-model"
+      ) as HTMLInputElement;
+
+      selectModel.value = "";
+    }
+
+    setIsModelSelected(false);
   };
 
   const onChangeModel: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
