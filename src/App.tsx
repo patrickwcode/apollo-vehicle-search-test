@@ -7,9 +7,9 @@ import GetYears from "./Queries/GetYears";
 import GetPhoto from "./Queries/GetPhoto";
 
 function App() {
-  const [year, setYear] = useState("2015");
-  const [make, setMake] = useState("Toyota");
-  const [model, setModel] = useState("Camry");
+  const [year, setYear] = useState("");
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
   const [isYearSelected, setIsYearSelected] = useState(false);
   const [isMakeSelected, setIsMakeSelected] = useState(false);
   const [isModelSelected, setIsModelSelected] = useState(false);
@@ -76,9 +76,23 @@ function App() {
             isMakeSelected={isMakeSelected}
           />
         </div>
+        <div>
+          <button
+            type="button"
+            className="btn btn-warning"
+            disabled={isModelSelected ? false : true}
+          >
+            Add Vehicle
+          </button>
+        </div>
       </div>
       <div>
-        <GetPhoto year={year} make={make} model={model} />
+        <GetPhoto
+          year={year}
+          make={make}
+          model={model}
+          isModelSelected={isModelSelected}
+        />
       </div>
     </main>
   );
