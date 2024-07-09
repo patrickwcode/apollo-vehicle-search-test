@@ -1,6 +1,6 @@
 import "./App.css";
-import { useState } from "react";
 import "bootstrap/scss/bootstrap.scss";
+import { useState } from "react";
 import GetMakes from "./Queries/GetMakes";
 import GetModels from "./Queries/GetModels";
 import GetYears from "./Queries/GetYears";
@@ -56,37 +56,40 @@ function App() {
   };
 
   return (
-    <main className="container bg-primary bg-gradient p-3 border border-primary-subtle">
-      <div className="row">
-        <div className="col-sm col-md-3">
-          <GetYears onChangeYear={onChangeYear} />
-        </div>
-        <div className="col-sm col-md-3">
-          <GetMakes
-            onChangeMake={onChangeMake}
-            year={year}
-            isYearSelected={isYearSelected}
-          />
-        </div>
-        <div className="col-sm col-md-6">
-          <GetModels
-            onChangeModel={onChangeModel}
-            year={year}
-            make={make}
-            isMakeSelected={isMakeSelected}
-          />
-        </div>
-        <div>
-          <button
-            type="button"
-            className="btn btn-warning"
-            disabled={isModelSelected ? false : true}
-          >
-            Add Vehicle
-          </button>
+    <main>
+      <h1 className="text-center text-white">Find a vehicle.</h1>
+      <div className="container bg-primary bg-gradient p-3 border border-primary-subtle">
+        <div className="row">
+          <div className="col-sm col-md-3">
+            <GetYears onChangeYear={onChangeYear} />
+          </div>
+          <div className="col-sm col-md-3">
+            <GetMakes
+              onChangeMake={onChangeMake}
+              year={year}
+              isYearSelected={isYearSelected}
+            />
+          </div>
+          <div className="col-sm col-md-6">
+            <GetModels
+              onChangeModel={onChangeModel}
+              year={year}
+              make={make}
+              isMakeSelected={isMakeSelected}
+            />
+          </div>
+          <div className="text-center">
+            <button
+              type="button"
+              className="btn btn-warning "
+              disabled={isModelSelected ? false : true}
+            >
+              Add Vehicle
+            </button>
+          </div>
         </div>
       </div>
-      <div>
+      <div className="text-center">
         <GetPhoto
           year={year}
           make={make}
