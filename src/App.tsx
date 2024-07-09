@@ -1,5 +1,4 @@
-import "./App.css";
-import "bootstrap/scss/bootstrap.scss";
+import './styles.scss';
 import { useState } from "react";
 import GetMakes from "./Queries/GetMakes";
 import GetModels from "./Queries/GetModels";
