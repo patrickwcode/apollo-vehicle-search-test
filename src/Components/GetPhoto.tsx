@@ -6,15 +6,9 @@ interface GetPhotoProps {
   year: string;
   make: string;
   model: string;
-  isModelSelected: boolean;
 }
 
-export default function GetPhoto({
-  year,
-  make,
-  model,
-  isModelSelected,
-}: GetPhotoProps) {
+export default function GetPhoto({ year, make, model }: GetPhotoProps) {
   const UNSPLASH_API_KEY: string = import.meta.env.VITE_UNSPLASH_API_KEY;
   const [photo, setPhoto] = useState<string>();
 

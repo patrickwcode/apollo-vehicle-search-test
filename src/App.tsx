@@ -1,9 +1,10 @@
-import './styles.scss';
+import "./styles.scss";
 import { useState } from "react";
-import GetMakes from "./Queries/GetMakes";
-import GetModels from "./Queries/GetModels";
-import GetYears from "./Queries/GetYears";
-import GetPhoto from "./Queries/GetPhoto";
+import GetMakes from "./Components/GetMakes";
+import GetModels from "./Components/GetModels";
+import GetYears from "./Components/GetYears";
+import GetPhoto from "./Components/GetPhoto";
+import Vehicles from "./Components/Vehicles";
 
 function App() {
   const [year, setYear] = useState("");
@@ -12,6 +13,7 @@ function App() {
   const [isYearSelected, setIsYearSelected] = useState(false);
   const [isMakeSelected, setIsMakeSelected] = useState(false);
   const [isModelSelected, setIsModelSelected] = useState(false);
+  const [vehicles, setVehicles] = useState<string[]>([]);
 
   const onChangeYear: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setYear(e.target.value);
@@ -54,10 +56,14 @@ function App() {
     setIsModelSelected(true);
   };
 
+  const addVehicle = () => {
+    setVehicles([...vehicles, `${year} ${make} ${model}`]);
+  };
+
   return (
     <main>
       <h1 className="text-center text-white">Find a vehicle.</h1>
-      <div className="container bg-primary bg-gradient p-3 border border-primary-subtle">
+      <form className="container bg-primary bg-gradient p-3 border border-primary-subtle">
         <div className="row">
           <div className="col-sm col-md-3">
             <GetYears onChangeYear={onChangeYear} />
@@ -82,19 +88,18 @@ function App() {
               type="button"
               className="btn btn-warning "
               disabled={isModelSelected ? false : true}
+              onClick={addVehicle}
             >
               Add Vehicle
             </button>
           </div>
         </div>
+      </form>
+      <div id="vehicles">
+        <Vehicles vehicles={vehicles} />
       </div>
       <div className="text-center">
-        <GetPhoto
-          year={year}
-          make={make}
-          model={model}
-          isModelSelected={isModelSelected}
-        />
+        <GetPhoto year={year} make={make} model={model} />
       </div>
     </main>
   );
